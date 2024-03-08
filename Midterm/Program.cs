@@ -10,7 +10,7 @@ public class InventoryItem
     // Constructor
     public InventoryItem(string itemName, int itemId, double price, int quantityInStock)
     {
-        // TODO: Initialize the properties with the values passed to the constructor.
+        // Initialized the properties with the values
         ItemName = itemName;
         ItemId = itemId;
         Price = price;
@@ -22,7 +22,7 @@ public class InventoryItem
     // Update the price of the item
     public void UpdatePrice(double newPrice)
     {
-        // TODO: Update the item's price with the new price.
+        // Item price update with new price
         this.Price = newPrice;
 
     }
@@ -30,7 +30,7 @@ public class InventoryItem
     // Restock the item
     public void RestockItem(int additionalQuantity)
     {
-        // TODO: Increase the item's stock quantity by the additional quantity.
+        // Increasing the stock when in adding additionalquantity
         this.QuantityInStock += additionalQuantity;
        
     }
@@ -38,24 +38,24 @@ public class InventoryItem
     // Sell an item
     public void SellItem(int quantitySold)
     {
-        // TODO: Decrease the item's stock quantity by the quantity sold.
-        // Make sure the stock doesn't go negative.
 
         if (this.QuantityInStock == 0)
         {
+            //If there are no items available in stock ,  display out of stock message.
             Console.WriteLine("Out of stock");
         }
 
         else
         {
+            //decreasing the item stock by the quantity sold.
             this.QuantityInStock -= quantitySold;
         }
     }
 
-    // Check if an item is in stock
+    
     public bool IsInStock()
     {
-        // TODO: Return true if the item is in stock (quantity > 0), otherwise false.
+        //Checking items are in stock
 
         if (QuantityInStock > 0)
         {
@@ -68,11 +68,16 @@ public class InventoryItem
     // Print item details
     public void PrintDetails()
     {
-        // TODO: Print the details of the item (name, id, price, and stock quantity).
+        // Print Name
+         Console.WriteLine($"Name:{this.ItemName}");
 
-        Console.WriteLine($"Name:{this.ItemName}");
+        //Print Id
         Console.WriteLine($"Id:{this.ItemId}");
+
+        //Print Price
         Console.WriteLine($"Price:{this.Price}");
+
+        //Print StockQuantity
         Console.WriteLine($"StockQuantity:{this.QuantityInStock}");
     }
 }
@@ -84,26 +89,34 @@ class Program
         InventoryItem item1 = new InventoryItem("Laptop", 101, 1200.50, 10);
         InventoryItem item2 = new InventoryItem("Smartphone", 102, 800.30, 15);
 
-        // TODO: Implement logic to interact with these objects.
-        // Example tasks:
-        // 1. Print details of all items.
+      
+        // Print Details for Item1 , Item2
         item1.PrintDetails();
+        Console.WriteLine();
         item2.PrintDetails();
+        Console.WriteLine("-------------");
 
-        // 2. Sell some items and then print the updated details.
+        // Printing details after selling item1 , item2
+
+
+
         item1.SellItem(4);
         item1.PrintDetails();
- 
+
+        Console.WriteLine();
 
         item2.SellItem(5);
         item2.PrintDetails();
+        Console.WriteLine("-------------");
 
-        // 3. Restock an item and print the updated details.
+        // Printing details after restocked Item1
+        
         item1.RestockItem(1);
         item1.PrintDetails();
+        Console.WriteLine("-------------");
 
-        // 4. Check if an item is in stock and print a message accordingly.
-        if(item2.IsInStock()==true)
+        // Checking stock availability
+        if (item2.IsInStock()==true)
         {
             Console.WriteLine("Item is available");
         }
